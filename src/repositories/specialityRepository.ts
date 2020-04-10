@@ -13,6 +13,7 @@ export default class SpecialityRepository implements ISpecialityRepository {
       .find({})
       .toArray()) as Promise<Speciality[]>;
   }
+
   getById(): Promise<Speciality> {
     throw new Error("Method not implemented.");
   }

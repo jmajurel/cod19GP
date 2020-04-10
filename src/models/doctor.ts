@@ -2,7 +2,9 @@ import Address from "./address";
 import Speciality from "./speciality";
 
 export default class Doctor {
-  name: string;
+  email: string;
+  firstName: string;
+  lastName: string;
   address: Address;
   speciality: Speciality;
 }
