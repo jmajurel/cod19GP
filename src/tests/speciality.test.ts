@@ -52,4 +52,14 @@ describe("get", () => {
     expect(result).toBeTruthy();
     expect(result.length).toBe(store.specialities.length);
   });
+
+  it("get one speciality", async () => {
+    const service: SpecialityService = container.resolve("specialityService");
+    const specialities = await service.getAll();
+    const foundSpeciality = await service.getById(
+      specialities[1]._id.toString()
+    );
+    expect(foundSpeciality).toBeTruthy();
+    expect(foundSpeciality._id).toEqual(specialities[1]._id);
+  });
 });

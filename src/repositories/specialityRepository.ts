@@ -1,6 +1,6 @@
 import ISpecialityRepository from "./interfaces/specialityRepoInterface";
 import Speciality from "../models/speciality";
-import { Db } from "mongodb";
+import { Db, ObjectId } from "mongodb";
 
 export default class SpecialityRepository implements ISpecialityRepository {
   private readonly dbClient: Db;
@@ -8,13 +8,14 @@ export default class SpecialityRepository implements ISpecialityRepository {
     this.dbClient = dbClient;
   }
   async getAll(): Promise<Speciality[]> {
-    return (await this.dbClient
-      .collection("specialities")
-      .find({})
-      .toArray()) as Promise<Speciality[]>;
+    return (
+      await this.dbClient.collection("specialities").find({})
+    ).toArray() as Promise<Speciality[]>;
   }
 
-  getById(): Promise<Speciality> {
-    throw new Error("Method not implemented.");
+  async getById(id: string): Promise<Speciality> {
+    return await this.dbClient
+      .collection("specialities")
+      .findOne({ _id: new ObjectId(id) });
   }
 }
