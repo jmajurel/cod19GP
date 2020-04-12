@@ -1,0 +1,23 @@
+#!/bin/bash
+API_URL="https://cod19-gp-dev.herokuapp.com/specialities"
+
+http POST $API_URL name="Allergy & Immunology" translation:='{ "en": "Allergy & Immunology", "fr": "Allergie & Immunologie" }'
+http POST $API_URL name="Anesthesiology" translation:='{ "en": "Anesthesiology", "fr": "Anesthésiologie" }'
+http POST $API_URL name="Dermatology" translation:='{ "en": "Dermatology", "fr": "Dermatologie" }'
+http POST $API_URL name="Diagnostic Radiology" translation:='{ "en": "Diagnostic Radiology", "fr": "Radiodiagnostic" }'
+http POST $API_URL name="Emergency Medicine" translation:='{ "en": "Emergency Medicine", "fr": "Médecine d urgences" }'
+http POST $API_URL name="Family Medicine" translation:='{ "en": "Family Medicine", "fr": "Médecine familiale" }'
+http POST $API_URL name="Internal Medicine" translation:='{ "en": "Internal Medicine", "fr": "Médecine interne" }'
+http POST $API_URL name="Medical Genetics" translation:='{ "en": "Medical Genetics", "fr": "Génétique médicale" }'
+http POST $API_URL name="Neurology" translation:='{ "en": "Neurology", "fr": "Neurologie" }'
+http POST $API_URL name="Nuclear Medicine" translation:='{ "en": "Nuclear Medicine", "fr": "Médecine nucléaire" }'
+http POST $API_URL name="Obstetrics & Gynecology" translation:='{ "en": "Obstetrics & Gynecology", "fr": "Obstétrique & Gynécologie" }'
+http POST $API_URL name="Ophthalmology" translation:='{ "en": "Ophthalmology", "fr": "Ophtalmologie" }'
+http POST $API_URL name="Pathology" translation:='{ "en": "Pathology", "fr": "Pathologie" }'
+http POST $API_URL name="Pediatrics" translation:='{ "en": "Pediatrics", "fr": "Pédiatrie" }'
+http POST $API_URL name="Physcial Medicine & Rehabilitation" translation:='{ "en": "Physcial Medicine & Rehabilitation", "fr": "Médecine physique et de réhabilitation" }'
+http POST $API_URL name="Preventive Medicine" translation:='{ "en": "Preventive Medicine", "fr": "Médecine préventive" }'
+http POST $API_URL name="Psychiatry" translation:='{ "en": "Psychiatry", "fr": "Psychiatrie" }'
+http POST $API_URL name="Radiation Oncology" translation:='{ "en": "Radiation Oncology", "fr": "Radio-oncologie" }'
+http POST $API_URL name="Surgery" translation:='{ "en": "Surgery", "fr": "Chirurgie" }'
+http POST $API_URL name="Urology" translation:='{ "en": "Urology", "fr": "Urologie" }'
