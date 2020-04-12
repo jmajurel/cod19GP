@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jmajurel/cod19GP#readme",
   "dependencies": {
     "@types/express": "^4.17.5",
+    "@types/glob": "^7.1.1",
     "@types/mongodb": "^3.5.5",
     "@types/node": "^13.11.1",
     "awilix": "^4.2.5",
