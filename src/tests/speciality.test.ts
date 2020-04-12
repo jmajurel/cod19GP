@@ -1,5 +1,5 @@
 import { MongoClient, Db } from "mongodb";
-import { MongoMemoryServer } from "mongodb-memory-server";
+const { MongoMemoryServer } = require("mongodb-memory-server");
 import SpecialityStore from "./stores/speciality.store";
 import {
   createContainer,
@@ -12,6 +12,7 @@ import {
 import SpecialityService from "../services/specialityService";
 import SpecialityRepository from "../repositories/specialityRepository";
 import Speciality from "../models/speciality";
+import { exec } from "child_process";
 
 const mongod = new MongoMemoryServer();
 
@@ -61,5 +62,16 @@ describe("get", () => {
     );
     expect(foundSpeciality).toBeTruthy();
     expect(foundSpeciality._id).toEqual(specialities[1]._id);
+  });
+});
+
+describe("insert", () => {
+  it("create a new speciality", async () => {
+    const service: SpecialityService = container.resolve("specialityService");
+    const newSpeciality = new Speciality();
+    newSpeciality.name = "Dermatology";
+    const newCreatedSpeciality = await service.create(newSpeciality);
+    expect(newSpeciality).toBeTruthy();
+    expect(newSpeciality._id).toBeDefined();
   });
 });

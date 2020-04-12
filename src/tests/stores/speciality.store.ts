@@ -1,7 +1,8 @@
 import Speciality from "../../models/speciality";
-import { Db } from "mongodb";
+import { Db, ObjectId } from "mongodb";
 
 const allergist: Speciality = {
+  _id: new ObjectId(1),
   name: "Allergist",
   translation: {
     en: "Allergist",
@@ -10,6 +11,7 @@ const allergist: Speciality = {
 };
 
 const cardiologist: Speciality = {
+  _id: new ObjectId(2),
   name: "Cardiologists",
   translation: {
     en: "Cardiologist",

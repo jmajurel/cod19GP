@@ -18,4 +18,7 @@ export default class SpecialityService implements ISpecialityService {
   async getById(id: string): Promise<Speciality> {
     return await this.specialityRepository.getById(id);
   }
+  async create(newSpeciality: Speciality): Promise<Speciality> {
+    return await this.specialityRepository.create(newSpeciality);
+  }
 }
