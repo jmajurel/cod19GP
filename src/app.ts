@@ -5,6 +5,9 @@ import { asClass, createContainer, asValue } from "awilix";
 import { loadControllers, scopePerRequest } from "awilix-express";
 import SpecialityService from "./services/specialityService";
 import SpecialityRepository from "./repositories/specialityRepository";
+import DoctorService from "./services/doctorService";
+import DoctorRepository from "./repositories/doctorRepository";
+import DoctorAssembler from "./routers/dto/doctorAssembler";
 
 dotenv.config();
 const app = express();
@@ -22,7 +25,10 @@ async function configureContainer() {
   );
   container.register({
     specialityService: asClass(SpecialityService).scoped(),
+    doctorService: asClass(DoctorService).scoped(),
     specialityRepository: asClass(SpecialityRepository).scoped(),
+    doctorRepository: asClass(DoctorRepository).scoped(),
+    doctorAssembler: asClass(DoctorAssembler).scoped(),
     dbClient: asValue(dbConnection),
   });
 

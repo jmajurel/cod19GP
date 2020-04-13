@@ -1,4 +1,4 @@
-import { MongoClient, Db, ObjectId } from "mongodb";
+import { MongoClient, Db } from "mongodb";
 const { MongoMemoryServer } = require("mongodb-memory-server");
 import AddressStore from "./stores/address.store";
 import {
@@ -45,11 +45,55 @@ afterAll(async () => {
 });
 
 describe("get", () => {
+  it("get all addresses", async () => {
+    const service: AddressService = container.resolve("addressService");
+
+    const results = await service.getAll();
+    expect(results).toBeTruthy();
+    expect(results.length).toBeGreaterThan(0);
+  });
+
   it("get one address", async () => {
     const service: AddressService = container.resolve("addressService");
     const store: AddressStore = container.resolve("addressStore");
-    const result = await service.getById("1");
-    expect(result).toBeTruthy();
-    expect(result._id).toBe(new ObjectId(1));
+    const addresses = await service.getAll();
+
+    const target = addresses[1];
+
+    const foundAddress = await service.getById(target._id.toString());
+    expect(foundAddress).toBeTruthy();
+    expect(foundAddress._id.toString()).toBe(target._id.toString());
+  });
+});
+
+describe("insert", () => {
+  it("create a new address", async () => {
+    const service: AddressService = container.resolve("addressService");
+    const mockAddress: Address = {
+      _id: null,
+      address1: "26A mock street",
+      address2: "20th floor",
+      postCode: "NY 10013",
+      city: "New York",
+      country: "USA",
+      state: "New York",
+    };
+    const newlyCreatedAddress = await service.create(mockAddress);
+    expect(newlyCreatedAddress).toBeTruthy();
+    expect(newlyCreatedAddress._id).toBeDefined();
+  });
+});
+
+describe("update", () => {
+  it("update an exisitng addres", async () => {
+    const service: AddressService = container.resolve("addressService");
+    const existingAddresses = await service.getAll();
+    const target = existingAddresses[1];
+    target.address1 = "Mock address for update testing";
+    await service.update(target._id.toString(), target);
+
+    const updatedAddress = await service.getById(target._id.toString());
+    expect(updatedAddress).toBeTruthy();
+    expect(updatedAddress.address1).toBe(target.address1);
   });
 });
