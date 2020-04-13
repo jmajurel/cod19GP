@@ -11,8 +11,8 @@ export default class AddressService implements IAddressService {
   }) {
     this.addressRepository = addressRepository;
   }
-  getById(id: string): Promise<Address> {
-    throw new Error("Method not implemented.");
+  async getById(id: string): Promise<Address> {
+    return await this.addressRepository.getById(id);
   }
   create(newAddress: Address): Promise<Address> {
     throw new Error("Method not implemented.");

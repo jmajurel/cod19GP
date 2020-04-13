@@ -7,8 +7,8 @@ export default class AddressRepository implements IAddressRepository {
   constructor({ dbClient }: { dbClient: Db }) {
     this.dbClient = dbClient;
   }
-  getById(id: string): Promise<Address> {
-    throw new Error("Method not implemented.");
+  async getById(id: string): Promise<Address> {
+    return await this.dbClient.collection("addresses").findOne({ _id: id });
   }
   create(newAdress: Address): Promise<Address> {
     throw new Error("Method not implemented.");
