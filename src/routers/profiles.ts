@@ -4,7 +4,7 @@ import ISpecialityService from "../services/specialityService";
 import { Request, Response } from "express";
 import bodyParser from "body-parser";
 import DoctorAssembler from "./dto/doctorAssembler";
-
+import checkJwt from "./auth";
 @route("/profiles")
 export default class ProfileAPI {
   private readonly _doctorService: IDoctorService;
@@ -25,13 +25,14 @@ export default class ProfileAPI {
   }
 
   @POST()
-  @before([bodyParser()])
+  @before([checkJwt, bodyParser()])
   async insert(req: Request, res: Response) {
     return res.status(201).json(await this._doctorService.create(req.body));
   }
 
   @route("/:id")
   @GET()
+  @before([checkJwt])
   async getById(req: Request, res: Response) {
     const foundDoctor = await this._doctorService.getById(req.params.id);
     const speciality = await this._specialityService.getById(
@@ -44,6 +45,7 @@ export default class ProfileAPI {
 
   @route("/email/:email")
   @GET()
+  @before([checkJwt])
   async getByEmail(req: Request, res: Response) {
     const foundDoctor = await this._doctorService.getByEmail(req.params.email);
     const speciality = await this._specialityService.getById(
@@ -56,9 +58,9 @@ export default class ProfileAPI {
 
   @route("/:id")
   @PUT()
-  @before([bodyParser()])
+  @before([checkJwt, bodyParser()])
   async update(req: Request, res: Response) {
     await this._doctorService.update(req.params.id, req.body);
-    res.status(204).json();
+    res.status(204);
   }
 }

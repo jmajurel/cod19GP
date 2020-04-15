@@ -32,6 +32,7 @@ export default class DoctorRepository implements IDoctorRepository {
   }
 
   async update(id: string, profile: Doctor): Promise<void> {
+    delete profile._id;
     return await this.dbClient
       .collection("doctors")
       .updateOne({ _id: new ObjectId(id) }, { $set: { ...profile } })
