@@ -8,9 +8,12 @@ import SpecialityRepository from "./repositories/specialityRepository";
 import DoctorService from "./services/doctorService";
 import DoctorRepository from "./repositories/doctorRepository";
 import DoctorAssembler from "./routers/dto/doctorAssembler";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors());
+
 let connectionString = process.env.DB_CONNECTION_STRING;
 
 connectionString = connectionString
