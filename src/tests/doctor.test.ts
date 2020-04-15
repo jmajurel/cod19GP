@@ -68,6 +68,15 @@ describe("get", () => {
     expect(foundProfile).toBeTruthy();
     expect(foundProfile._id.toString()).toBe(target._id.toString());
   });
+
+  it("get a doctor profile from email", async () => {
+    const service: DoctorService = container.resolve("doctorService");
+    const targetProfileEmail = "smith.paul@gmail.com";
+    const foundProfile = await service.getByEmail(targetProfileEmail);
+
+    expect(foundProfile).toBeTruthy();
+    expect(foundProfile.email).toBe(targetProfileEmail);
+  });
 });
 
 describe("insert", () => {

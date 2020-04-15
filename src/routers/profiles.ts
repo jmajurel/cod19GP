@@ -37,7 +37,18 @@ export default class ProfileAPI {
     const speciality = await this._specialityService.getById(
       foundDoctor.specialityId
     );
-    console.log("speciality: ", speciality);
+    res
+      .status(200)
+      .json(this._doctorAssembler.writeDTO(foundDoctor, speciality));
+  }
+
+  @route("/email/:email")
+  @GET()
+  async getByEmail(req: Request, res: Response) {
+    const foundDoctor = await this._doctorService.getByEmail(req.params.email);
+    const speciality = await this._specialityService.getById(
+      foundDoctor.specialityId
+    );
     res
       .status(200)
       .json(this._doctorAssembler.writeDTO(foundDoctor, speciality));

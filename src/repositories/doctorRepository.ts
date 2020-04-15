@@ -9,6 +9,10 @@ export default class DoctorRepository implements IDoctorRepository {
     this.dbClient = dbClient;
   }
 
+  async getByEmail(email: string): Promise<Doctor> {
+    return this.dbClient.collection("doctors").findOne({ email });
+  }
+
   async getAll(): Promise<Doctor[]> {
     return this.dbClient.collection("doctors").find({}).toArray() as Promise<
       Doctor[]

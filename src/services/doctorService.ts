@@ -16,6 +16,10 @@ export default class DoctorService implements IDoctorService {
     return await this.doctorRepository.getById(id);
   }
 
+  async getByEmail(email: string): Promise<Doctor> {
+    return await this.doctorRepository.getByEmail(email);
+  }
+
   async create(newProfile: Doctor): Promise<Doctor> {
     return await this.doctorRepository.create(newProfile);
   }
