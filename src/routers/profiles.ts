@@ -5,6 +5,8 @@ import { Request, Response } from "express";
 import bodyParser from "body-parser";
 import DoctorAssembler from "./dto/doctorAssembler";
 import checkJwt from "./auth";
+import Speciality from "../models/speciality";
+
 @route("/profiles")
 export default class ProfileAPI {
   private readonly _doctorService: IDoctorService;
@@ -48,9 +50,13 @@ export default class ProfileAPI {
   @before([checkJwt])
   async getByEmail(req: Request, res: Response) {
     const foundDoctor = await this._doctorService.getByEmail(req.params.email);
-    const speciality = await this._specialityService.getById(
-      foundDoctor.specialityId
-    );
+
+    let speciality: Speciality;
+    if (foundDoctor) {
+      speciality = await this._specialityService.getById(
+        foundDoctor.specialityId
+      );
+    }
     res
       .status(200)
       .json(this._doctorAssembler.writeDTO(foundDoctor, speciality));
