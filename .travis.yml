@@ -10,7 +10,7 @@ deploy:
   api_key:
     secure: N3Tui6VrqssYfyNhATzsO6QKlb9SRMefeQc6UevEycZovupcCJ/+OR6Q3sRZCmDm7WImcbqwOb9uN8g9ilNHJBX0PePfDVVTvJ0bvpdBCryoux2ZffuR6FYExD+gQWVZgN7U4Wva0KLqQJWAE/B/CXdFAZTVq17OBDxmS8Axxg1ra3cZqE+e1aVBamzfX5oAO6h1qFwHFulOYvdE/3Z+8241Xgjdofma2ik1dpDegs+Yvnw5El9+Mhe3Z2pvz4G8SOCtACz2FT/nQW2W28NGTIUcWQjxn+gGjdB/8UyHXvswsnmq8UNEAM0HxO0WvxtTIX0np9LVvVLuUj3k0iatYC90tetNnITbEHDhDeMO6XvZW2DE8BsiL4G6sj/6nYxIB1gVc6aL9QQvb4bbzxOfMnPpgV1cz1iJkf7MyqRj10838Y84Mk9kXgb0Jwu/k/HBSwINGPoUU/PNGFx/Stdv+5ZJBgnPY6UC0l+WKX87bwF9BscuCQhhCLKEaEUt4s3BErprh9tjpVft9BTwhkt2VGr7zKSUTtZdG7AlVQXY67LAWSCGB2SJA53ESW0IjA2UDPp/kSyJ4DPExhueAEDq8Wqt4ouWzWq8R2HjiTAW6zJKSj37wt3QDF6LHUBfxjLdKlQKD1wVBqWNVkyWcmUcxSZoX4p4gz3cdR9yvNifwh8=
   app:
-    develop: cod19-health-dev
-    master: cod19-health
+    develop: cod19-gp-dev
+    master: cod19-gp
 notifications:
   email: false
