@@ -119,16 +119,16 @@ describe("update", () => {
     const service: DoctorService = container.resolve("doctorService");
 
     const target = (await service.getAll())[0];
-
+    const id = target._id.toString();
     target.firstName = "Scarlette";
     target.lastName = "Johansson";
 
-    await service.update(target._id.toString(), target);
+    await service.update(id, target);
 
-    const updatedProfile = await service.getById(target._id.toString());
+    const updatedProfile = await service.getById(id);
 
     expect(updatedProfile).toBeTruthy();
-    expect(updatedProfile._id.toString()).toBe(target._id.toString());
+    expect(updatedProfile._id.toString()).toBe(id);
     expect(updatedProfile.firstName).toBe(target.firstName);
     expect(updatedProfile.lastName).toBe(target.lastName);
   });
